@@ -13,6 +13,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+// otra forma de definir una ruta es
+Route::view('/', 'welcome');
+
+/* Hacer las siguientes rutas
+localhost/ -> welcome
+localhost/contacto -> contac
+localhost/blog -> blog
+localhost/acerca-de-mi -> about
+*/
+Route::view('/contact', 'contact');
+Route::view('/blog', 'blog');
+Route::view('/about', 'about');
