@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,5 +28,5 @@ localhost/blog -> blog
 localhost/acerca-de-mi -> about
 */
 Route::view('/contacto', 'contact')->name('contact');
-Route::view('/blog', 'blog')->name('blog');
+Route::get('/blog', [PostController::class, 'index'])->name('blog');
 Route::view('/about', 'about')->name('about');
