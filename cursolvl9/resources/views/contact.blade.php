@@ -8,6 +8,7 @@
     <link rel="icon" href="{{asset('favicon.ico')}}">
 </head>
 <body>
+    @include('partials.navigation')
     <h1>Contact</h1>
 </body>
 </html>
