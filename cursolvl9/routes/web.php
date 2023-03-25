@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 // });
 
 // otra forma de definir una ruta es
-Route::view('/', 'welcome');
+Route::view('/', 'welcome')->name('home');
 
 /* Hacer las siguientes rutas
 localhost/ -> welcome
@@ -26,6 +26,6 @@ localhost/contacto -> contac
 localhost/blog -> blog
 localhost/acerca-de-mi -> about
 */
-Route::view('/contact', 'contact');
-Route::view('/blog', 'blog');
-Route::view('/about', 'about');
+Route::view('/contacto', 'contact')->name('contact');
+Route::view('/blog', 'blog')->name('blog');
+Route::view('/about', 'about')->name('about');
