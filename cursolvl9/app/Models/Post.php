@@ -11,5 +11,5 @@ class Post extends Model
     //protected $table = 'otroNombre'; // cuando la tabla tenga un nombre diferente al modelo
 
     // para utilizar asignaciones masivas se requiere la propiedad fillable
-    protected $fillable = ['title', 'body'];
+    // protected $fillable = ['title', 'body'];
 }
