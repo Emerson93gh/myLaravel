@@ -39,7 +39,13 @@ class PostController extends Controller
         return view('posts.create');
     }
 
-    public function store(){
-        return "Process form";
+    public function store(Request $request){
+        $post = new Post;
+        $post->title = $request->input('title');
+        $post->body = $request->input('body');
+        $post->save();
+
+        // return redirect()->route('posts.index');
+        return to_route('posts.index');
     }
 }
