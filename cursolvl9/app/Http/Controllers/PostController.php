@@ -40,10 +40,14 @@ class PostController extends Controller
     }
 
     public function store(Request $request){
-        // validaciones del formulario
+        // validaciones del formulario y mensajes de error en espanol
         $request->validate([
             'title' => ['required', 'min:4'],
             'body' => ['required'],
+        ], [
+            'title.required' => 'Error: Es obligatotio el campo :attribute',
+            'title.min' => 'Error: Ingresar al menos 4 caracteres',
+            'body.required' => 'Error: Es obligatotio el campo :attribute',
         ]);
 
         $post = new Post;
