@@ -7,6 +7,7 @@
     <title>Laravel 10 - {{ $title ?? '' }} </title>
     <meta name="description" content="{{$metaDescription ?? 'Default meta description'}})">
     {{-- <link rel="icon" href="{{asset('favicon.ico')}}"> --}}
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body>
     {{-- @include('partials.navigation') --}}
