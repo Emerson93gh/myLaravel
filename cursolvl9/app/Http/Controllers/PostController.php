@@ -60,4 +60,28 @@ class PostController extends Controller
         // return redirect()->route('posts.index');
         return to_route('posts.index');
     }
+
+    public function edit(Post $post){
+        // return $post;
+        return view('posts.edit', ['post' => $post]);
+    }
+
+    public function update(Request $request, Post $post){
+        $request->validate([
+            'title' => ['required', 'min:4'],
+            'body' => ['required'],
+        ], [
+            'title.required' => 'Error: Es obligatotio el campo :attribute',
+            'title.min' => 'Error: Ingresar al menos 4 caracteres',
+            'body.required' => 'Error: Es obligatotio el campo :attribute',
+        ]);
+
+        $post->title = $request->input('title');
+        $post->body = $request->input('body');
+        $post->save();
+
+        session()->flash('status', 'Post updated!');
+
+        return to_route('posts.show', $post);
+    }
 }
