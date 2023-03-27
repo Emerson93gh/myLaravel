@@ -11,6 +11,11 @@ use Symfony\Component\Console\Input\Input;
 
 class PostController extends Controller
 {
+    public function __construct()
+    {
+        // $this->middleware('auth', ['only' => ['create', 'edit', 'store']]);
+        $this->middleware('auth', ['except' => ['index', 'show']]);
+    }
     public function index(){
         // $posts = [
         //     ['title' => 'First post'],
