@@ -133,4 +133,11 @@ class PostController extends Controller
         // Otra forma de enviar alertas
         return to_route('posts.show', $post)->with('status', 'Post updated!');
     }
+
+    public function destroy(Post $post) {
+        //return 'Eliminando dato';
+        $post->delete();
+
+        return to_route('posts.index')->with('status', 'Post deleted!');
+    }
 }

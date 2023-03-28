@@ -27,11 +27,11 @@ meta-description="Blog meta description">
             <div class="flex justify-between">
                 <a class="inline-flex items-center text-xs font-semibold tracking-widest text-center uppercase transition duration-150 ease-in-out dark:text-slate-400 text-slate-500 hover:text-slate-600 dark:hover:text-slate-500 focus:outline-none focus:border-slate-200"
                     href="{{ route('posts.edit', $post) }}">Edit</a>
-                {{-- <form action="{{ route('posts.destroy', $post) }}" method="POST">
-                    @csrf
-                    @method('DELETE')
-                    <button class="inline-flex items-center text-xs font-semibold tracking-widest text-center text-red-500 uppercase transition duration-150 ease-in-out dark:text-red-500/80 hover:text-red-600 focus:outline-none" type="submit">Delete</button>
-                </form> --}}
+                <form action="{{ route('posts.destroy', $post) }}" method="POST">
+                    @csrf @method('delete')
+                    <button class="inline-flex items-center text-xs font-semibold tracking-widest text-center text-red-500 uppercase transition duration-150 ease-in-out dark:text-red-500/80 hover:text-red-600 focus:outline-none"
+                        onclick="return confirm('¿Esta seguro/a de eliminar el producto?'" type="submit">Delete</button>
+                </form>
             </div>
             @endauth
         </div>
