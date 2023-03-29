@@ -24,7 +24,7 @@ class SaleController extends Controller
      */
     public function create()
     {
-        //
+        return view('sales.billing');
     }
 
     /**
