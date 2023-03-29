@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AnimalController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SaleController;
 use Illuminate\Support\Facades\Route;
@@ -32,3 +33,20 @@ Route::middleware('auth')->group(function () {
 require __DIR__.'/auth.php';
 
 Route::resource('sale', SaleController::class);
+
+// Route::middleware('auth')->group(function () {
+//     Route::get('/animal', [AnimalController::class, 'index'])->name('animal.index');
+//     Route::get('/animal/create', [AnimalController::class, 'create'])->name('animal.create');
+//     Route::post('/animal', [AnimalController::class, 'store'])->name('animal.store');
+//     Route::get('/animal/{animal}', [AnimalController::class, 'show'])->name('animal.show');
+//     Route::get('/animal/{animal}/edit', [AnimalController::class, 'edit'])->name('animal.edit');
+//     Route::patch('/animal/{animal}', [AnimalController::class, 'update'])->name('animal.update');
+//     Route::delete('/animal/{animal}', [AnimalController::class, 'destroy'])->name('animal.destroy');
+// });
+Route::get('/animal', [AnimalController::class, 'index'])->name('animals.index');
+Route::get('/animal/create', [AnimalController::class, 'create'])->name('animals.form');
+Route::post('/animal', [AnimalController::class, 'store'])->name('animals.store');
+Route::get('/animal/{animal}', [AnimalController::class, 'show'])->name('animals.show');
+Route::get('/animal/{animal}/edit', [AnimalController::class, 'edit'])->name('animals.edit');
+Route::patch('/animal/{animal}', [AnimalController::class, 'update'])->name('animals.update');
+Route::delete('/animal/{animal}', [AnimalController::class, 'destroy'])->name('animals.destroy');
