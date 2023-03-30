@@ -1,0 +1,107 @@
+Docker y Laravel
+
+Definir ruta de proyecto
+curl -s https://laravel.build/exammple-app | bash 
+ingresa pass de Docker
+Arrancar server, debe estar dentro de la ruta del proyecto:
+./vendor/bin/sail/ up
+Para detener server
+./vendor/bin/sail/ down
+
+Como crear un alias: (alt + 126 = ~)
+elevar permisos sudo nano ~ /.bashrc
+ingresar pass 
+ingresar la linea: alias sail="./vendor/bin/sail"
+Guardar con ctrl + o y enter, cerar ctrl + x 
+Regressamos a la raiz e ingresamos para refrescar los cambios:
+source ~./bashrc
+Ingresar alias y dar enter, para que se muestre la lista de alias
+Usarlo: sail up
+
+Para iniciar server: php -S localhost:3000 
+Extensiones en php.ini: curl. fileinfo, gd, mysqli,pdo_mysql, openssl y pgsql
+
+1 Crear un nuevo proyecto laravel con Composer
+R/ composer create-project laravel/Laravel nombre-app
+
+2 iniciar servidor artisan
+R/ php artisan serve
+
+3 verificar conexión e iniciar BD precargadas en proyecto
+R/ php artisan migrate
+
+4 eliminar BD precargadas con la migración
+R/ php artisan migrate:rollback
+
+5 listar routas creadas con Breeze
+R/ php artisan route:list
+
+6 crear un componente
+R/ Php artisan make:component nombre-comp
+
+7 crear un modelo con su controlador de recursos (migración y controller con 7 recursos)
+R/ php artisan make:model Nombre-modelo -mcr
+
+8 Donde se definen las rutas o recursos
+R/ En web.php
+
+9 Como se definen los recursos
+R/ Route::resource(‘client’, ClientController::class);
+
+10 Como consultar la lista de rutas
+R/ php artisan route:list
+11 Cual etiqueta se debe utilizar siempre dentro de un formulario
+R/ @csrf
+
+12 Cómo agregar los recursos de css y js en el proyecto
+R/ Hay que instalar todas las dependencias ya sea con npm install o yarn install
+Luego definir la etiqueta con los recursos: @vite([‘resources/css/app.css’, ‘resources/js/app.js’]) 
+Nota: de preferencia en la vista de plantilla o componente. No logré trabajar con el servidor VITE porque recomendaba trabajar con el servidor Artisan; por ello, tocaba compilar para ver cambios en la carpeta publica con: npm run build
+
+13 Cómo crear un controlador
+R/ php artisan make:controller 
+
+14  Cómo aplicar una nueva migracion UP
+R/ php artisan migrate
+
+15 Cómo aplicar una migración DOWN (eliminando la última migración realizada)
+R/ php artisan migrate:rollback
+
+16 Cómo modificar una estructura de datos de una tabla, pero borrando todos sus registros:
+R/ php artisan migrate:fresh
+
+17 Cómo crear una migración
+R/ php artisan make:migration create_posts_table
+
+18 Si se necesita actualizar una tabla existente se debe crear una nueva migración:
+R/ php artisan make:migration add_body_to_posts_table
+
+19 Cómo crear un modelo:
+R/ php artisan make:model NombrePost
+20 Cuales son los métodos básicos de eloquent (ORM)
+R/ Post::get(); Post::find($id); $post->save(); $post->delete();
+
+21 Como ingresar a la terminal tinker de eloquent
+R/ php artisan tinker
+
+22 Como guardar una variable en eloquent
+R/ $post = Post::find(2);
+
+23 Como acceder a sus atributos en eloquent
+R/ $post->title;
+
+24 Como hacer modificaciones en eloquent
+R/ $post->title = “dato modificar”;
+
+25 Como guardar datos en eloquent
+R/ $post->save();
+
+26 Como inicializar una variable en eloquent
+R/ $post = new Post;
+
+Instalación de Laravel Breeze
+Composer require laravel/breeze --dev
+Lanzar comando: php artisan breeze:install
+Instalar dependencias: npm install
+Correr para aplicar cambios: npm run dev / npm run build
+Lanzar php artisan serve
