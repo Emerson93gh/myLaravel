@@ -53,7 +53,7 @@ class AnimalController extends Controller
 
         //Animal::create($request->validate());
 
-        return to_route('animals.index');
+        return to_route('animals.index')->with('status', 'Mascota registrada!');
     }
 
     /**
@@ -88,7 +88,7 @@ class AnimalController extends Controller
         $animal->descripcion = $request['descripcion'];
         $animal->save();
 
-        return to_route('animals.index');
+        return to_route('animals.index')->with('status', 'Mascota actualizada!');
     }
 
     /**
@@ -98,6 +98,6 @@ class AnimalController extends Controller
     {
         $animal->delete();
 
-        return to_route('animals.index');
+        return to_route('animals.index')->with('status', 'Mascota eliminada!');
     }
 }

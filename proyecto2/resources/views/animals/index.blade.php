@@ -1,9 +1,9 @@
 @extends('theme.base-bs5')
 @section('content')
     <div>
-        <div class="row">
+        <div class="row justify-content-center text-center">
             <div class="col col-lg-6">
-                <h1 class="text-success font-bold text-center my-5">Lista de animales</h1>
+                <h1 class="text-primary font-bold text-center my-5">Lista de animales</h1>
             </div>
             <div class="col col-lg-6">
                 <a href="{{ route('animals.form') }}" class="btn btn-primary my-5">Crear</a>
