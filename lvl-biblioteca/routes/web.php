@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EmpleadosController;
 use App\Http\Controllers\MemberController;
 use Illuminate\Support\Facades\Route;
 
@@ -23,3 +24,5 @@ Route::get('/show', 'MemberController@getMembers');
 Route::post('/save', 'MemberController@save');
 Route::post('/delete', 'MemberController@delete');
 Route::post('/update', 'MemberController@update');
+
+Route::get('/empleado', [EmpleadosController::class, 'index'])->name('empleados.index');
