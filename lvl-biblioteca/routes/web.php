@@ -26,3 +26,5 @@ Route::post('/delete', 'MemberController@delete');
 Route::post('/update', 'MemberController@update');
 
 Route::get('/empleado', [EmpleadosController::class, 'index'])->name('empleados.index');
+
+Route::get('datatable/empleados', 'DatatableController@empleado')->name('datatable.empleado');

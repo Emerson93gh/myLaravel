@@ -20,7 +20,7 @@
                             <th scope="col">Acciones</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    {{-- <tbody>
                         @forelse ($empleados as $empleado)
                             <tr class="">
                                 <td>{{$empleado->id}}</td>
@@ -35,7 +35,7 @@
                                 </span> </td>
                             </tr>
                         @endforelse
-                    </tbody>
+                    </tbody> --}}
                 </table>
             </div>
         </div>
@@ -50,9 +50,22 @@
     <script src="https://cdn.datatables.net/responsive/2.4.1/js/dataTables.responsive.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.4.1/js/responsive.bootstrap5.min.js"></script>
     <script>
-        $('#empleados').DataTable({
+        var table = $('#empleados').DataTable({
             responsive: true,
             autoWidth: false,
+            "ajax": "{{route('datatable.empleado')}}",
+            "columns": [
+                {data: 'id'},
+                {data: 'nombre'},
+                {data: 'correo'},
+            ],
+            // columnDefs: [
+            //     {
+            //         targets: -1,
+            //         data: null,
+            //         defaultContent: '<button>Click!</button>',
+            //     },
+            // ],
 
             "language": {
             // "lengthMenu": "Mostrar _MENU_ registros por página",
@@ -77,6 +90,10 @@
                 "previous": "Anterior"
             }
             }
+        });
+        $('#empleados tbody').on('click', 'button', function () {
+            var data = table.row($(this).parents('tr')).data();
+            alert(data[0] + "'s name is: " + data[1]);
         });
     </script>
 @endsection
