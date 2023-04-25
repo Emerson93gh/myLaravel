@@ -52,7 +52,31 @@
     <script>
         $('#empleados').DataTable({
             responsive: true,
-            autoWidth: false
+            autoWidth: false,
+
+            "language": {
+            // "lengthMenu": "Mostrar _MENU_ registros por página",
+            "lengthMenu": "Mostrar "
+                                + `
+                                <select class="form-select custom-select custom-select-sm form-control form-control-sm">
+                                    <option value="10">10</option>
+                                    <option value="25">25</option>
+                                    <option value="50">50</option>
+                                    <option value="100">100</option>
+                                    <option value="-1">All</option>
+                                </select>
+                                ` +
+                            " registros por página",
+            "zeroRecords": "No se ha encontrado - disculpe",
+            "info": "Mostrando la página _PAGE_ de _PAGES_",
+            "infoEmpty": "No hay registros disponibles",
+            "infoFiltered": "(Filtrado de _MAX_ registros totales)",
+            "search": "Buscar:",
+            "paginate": {
+                "next": "Siguiente",
+                "previous": "Anterior"
+            }
+            }
         });
     </script>
 @endsection
