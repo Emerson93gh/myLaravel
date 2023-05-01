@@ -1,4 +1,5 @@
 const mix = require('laravel-mix');
+// const path = require('path');
 
 /*
  |--------------------------------------------------------------------------
@@ -12,6 +13,15 @@ const mix = require('laravel-mix');
  */
 
 mix.js('resources/js/app.js', 'public/js')
+    .js('resources/js/autores.js', 'public/js')
     .postCss('resources/css/app.css', 'public/css', [
         //
     ]);
+
+// module.exports = {
+//     entry: './resources/js/autores.js',
+//     output: {
+//         path: path.resolve(__dirname, 'dist'),
+//         filename: 'autores.js',
+//     },
+// }

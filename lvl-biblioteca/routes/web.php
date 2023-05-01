@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AutorController;
 use App\Http\Controllers\EmpleadosController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\UserController;
@@ -35,3 +36,10 @@ Route::post('/users', [UserController::class, 'store'])->name('users.store');
 Route::get('/users/edit/{id}/', [UserController::class, 'edit']);
 Route::post('/users/update', [UserController::class, 'update'])->name('users.update');
 Route::get('/users/destroy/{id}/', [UserController::class, 'destroy']);
+
+// Rutas para Autores
+Route::get('/autores', [AutorController::class, 'index'])->name('autores.index');
+Route::post('/autores', [AutorController::class, 'store'])->name('autores.store');
+Route::get('/autores/edit/{id}/', [AutorController::class, 'edit']);
+Route::post('/autores/update', [AutorController::class, 'update'])->name('autores.update');
+Route::get('/autores/destroy/{id}/', [AutorController::class, 'destroy']);
