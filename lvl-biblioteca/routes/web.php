@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AutorController;
 use App\Http\Controllers\EmpleadosController;
+use App\Http\Controllers\LibroController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -43,3 +44,10 @@ Route::post('/autores', [AutorController::class, 'store'])->name('autores.store'
 Route::get('/autores/edit/{id}/', [AutorController::class, 'edit']);
 Route::post('/autores/update', [AutorController::class, 'update'])->name('autores.update');
 Route::get('/autores/destroy/{id}/', [AutorController::class, 'destroy']);
+
+// Rutas para Libros
+Route::get('/libros', [LibroController::class, 'index'])->name('libros.index');
+Route::post('/libros', [LibroController::class, 'store'])->name('libros.store');
+Route::get('/libros/edit/{id}/', [LibroController::class, 'edit']);
+Route::post('/libros/update', [LibroController::class, 'update'])->name('libros.update');
+Route::get('/libros/destroy/{id}/', [LibroController::class, 'destroy']);

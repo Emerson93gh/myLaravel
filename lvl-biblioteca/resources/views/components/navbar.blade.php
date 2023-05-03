@@ -17,16 +17,16 @@
                 <div class="offcanvas-body">
                     <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="{{ url('/') }}"><i class="bi bi-shop-window"></i> Inicio</a>
+                            <a class="nav-link active" aria-current="page" href="{{ url('/') }}"><i class="bi bi-buildings"></i> Inicio</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#{{-- url('/libros') --}}"><i class="bi bi-journal-bookmark"></i> Libros</a>
+                            <a class="nav-link" href="{{ url('/libros') }}"><i class="bi bi-book"></i> Libros</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#"><i class="bi bi-journal-bookmark"></i> Préstamos</a>
+                            <a class="nav-link" href="#"><i class="bi bi-wallet"></i> Préstamos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ url('/autores') }}"><i class="bi bi-journal-bookmark"></i> Autores</a>
+                            <a class="nav-link" href="{{ url('/autores') }}"><i class="bi bi-people"></i> Autores</a>
                         </li>
                     </ul>
                 </div>
