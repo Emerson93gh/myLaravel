@@ -76,7 +76,14 @@
                         columns: [
                             {data: 'id', name: 'id'},
                             {data: 'nombre_autor', name: 'nombre_autor'},
-                            {data: 'fecha_nacimiento', name: 'fecha_nacimiento'},
+                            {data: 'fecha_nacimiento', name: 'fecha_nacimiento',
+                                render: function ( data, type, row ) {
+                                    var dateSplit = data.split('-');
+                                    return type === "display" || type === "filter" ?
+                                        dateSplit[2] + '-' + dateSplit[1] + '-' + dateSplit[0] :
+                                        data;
+                                }
+                            },
                             {data: 'action', name: 'action', orderable: false, searchable: false},
                         ],
                     });
