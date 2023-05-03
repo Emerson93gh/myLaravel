@@ -4,11 +4,11 @@
         <div class="modal-content">
             <form method="post" id="sample_form" class="form-horizontal">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="ModalLabel">Confirmación</h5>
+                    <h5 class="modal-title fw-bold text-danger-emphasis" id="ModalLabel">Confirmación</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <h4 align="center" style="margin:0;">¿Está seguro/a de eliminar este registro?</h4>
+                    <h4 class="fw-bolder" align="center" style="margin:0;">¿Está seguro/a de eliminar este registro?</h4>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>

@@ -17,12 +17,12 @@
                 <br />
                 <div class="card">
                     <div class="card-body">
-                        <table id="autores_datatable" class="table table-striped table-bordered text-center jusify-content-center">
+                        <table id="autores_datatable" class="table table-success table-striped table-bordered text-center jusify-content-center">
                             <thead>
                                 <tr>
-                                    <th># ID</th>
-                                    <th>Nombre del Autor</th>
-                                    <th>Fecha de nacimiento</th>
+                                    <th class="text-center"># ID</th>
+                                    <th class="text-center">Nombre del Autor</th>
+                                    <th class="text-center">Fecha de nacimiento</th>
                                     <th class="text-center">Acciones</th>
                                 </tr>
                             </thead>

@@ -17,15 +17,15 @@
                 <br />
                 <div class="card">
                     <div class="card-body">
-                        <table id="libros_datatable" class="table table-striped table-bordered text-center jusify-content-center">
+                        <table id="libros_datatable" class="table table-success table-striped table-bordered text-center jusify-content-center">
                             <thead>
                                 <tr>
-                                    <th># ID</th>
-                                    <th>Título del libro</th>
-                                    <th>Autor</th>
-                                    <th>Ubicación</th>
-                                    <th>Cantidad de ejemplares</th>
-                                    <th>Cantidad disponibles</th>
+                                    <th class="text-center"># ID</th>
+                                    <th class="text-center">Título del libro</th>
+                                    <th class="text-center">Autor</th>
+                                    <th class="text-center">Ubicación</th>
+                                    <th class="text-center">Cantidad de ejemplares</th>
+                                    <th class="text-center">Cantidad disponibles</th>
                                     <th class="text-center">Acciones</th>
                                 </tr>
                             </thead>
@@ -198,8 +198,8 @@
 @endsection
 
 @section('modal')
-    <!-- Seccion modal agregar/editar autor -->
+    <!-- Seccion modal agregar/editar libro -->
     @include('libros.modal-agregar')
-    <!-- Seccion modal eliminar autor -->
+    <!-- Seccion modal eliminar libro -->
     @include('theme.modal-confirmar')
 @endsection

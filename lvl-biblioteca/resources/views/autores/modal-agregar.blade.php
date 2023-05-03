@@ -3,17 +3,17 @@
       <div class="modal-content">
         <form method="POST" id="sample_form" class="form-horizontal">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="ModalLabel">Add New Record</h1>
+                <h1 class="modal-title fs-5 fw-bold text-success" id="ModalLabel">Add New Record</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <span id="form_result"></span>
                 <div class="form-group">
-                    <label>Nombre del autor : </label>
+                    <label class="fst-italic fw-semibold">Nombre del autor : </label>
                     <input type="text" name="nombre_autor" id="nombre_autor" class="form-control" />
                 </div>
                 <div class="form-group">
-                    <label>Fecha de nacimiento : </label>
+                    <label class="fst-italic fw-semibold">Fecha de nacimiento : </label>
                     <input type="date" name="fecha_nacimiento" id="fecha_nacimiento" class="form-control" />
                 </div>
                 {{-- <div class="form-group editpass">

@@ -9,11 +9,11 @@
             <div class="modal-body">
                 <span id="form_result"></span>
                 <div class="form-group">
-                    <label>Título del libro : </label>
+                    <label class="fst-italic fw-semibold">Título del libro : </label>
                     <input type="text" name="titulo" id="titulo" class="form-control" />
                 </div>
                 <div class="form-group">
-                    <label>Autor del libro : </label>
+                    <label class="fst-italic fw-semibold">Autor del libro : </label>
                     {{-- <input type="text" name="autor" id="autor" class="form-control" /> --}}
                     <select name="autor_id" id="autor_id" class="form-control">
                         @foreach ($autores as $autor)
@@ -22,11 +22,11 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label>Ubicación del libro : </label>
+                    <label class="fst-italic fw-semibold">Ubicación del libro : </label>
                     <input type="text" name="ubicacion" id="ubicacion" class="form-control" />
                 </div>
                 <div class="form-group">
-                    <label>Cantidad de ejemplares : </label>
+                    <label class="fst-italic fw-semibold">Cantidad de ejemplares : </label>
                     <input type="number" name="cantidad_ejemplares" id="cantidad_ejemplares" class="form-control" />
                 </div>
 
