@@ -23,7 +23,11 @@ class LibroController extends Controller
 
             return DataTables::of($libros)->addIndexColumn()
                 ->addColumn('action', function($libros) {
-                    $button = '<button type="button" name="edit" id="'.$libros->id.'"
+                    $button = '<button type="button" name="prestamo" id="'.$libros->id.'"
+                        class="btn btn-info btn-sm prestamo"><i class="bi bi-pencil-square"></i>
+                            Préstamo
+                        </button>';
+                    $button .= '  <button type="button" name="edit" id="'.$libros->id.'"
                         class="btn btn-warning btn-sm edit"><i class="bi bi-pencil-square"></i>
                             Editar
                         </button>';
@@ -52,7 +56,7 @@ class LibroController extends Controller
             'titulo' => 'required',
             'autor_id' => 'required',
             'ubicacion' => 'required',
-            'cantidad_ejemplares' => 'required',
+            'cantidad_ejemplares' => 'required|gte:1',
         );
 
         $error = Validator::make($request->all(), $rules);
@@ -73,9 +77,15 @@ class LibroController extends Controller
         return response()->json(['success' => 'Libro agregado satisfactoriamente!']);
     }
 
-    public function show(Libro $libro)
+    public function show($id)
     {
-        //
+        //$id = $libro->id;
+
+        if(request()->ajax()) {
+            $data = Libro::findOrFail($id);
+
+            return response()->json(['result' => $data]);
+        }
     }
 
     public function edit($id)

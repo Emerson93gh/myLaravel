@@ -23,7 +23,7 @@
                             <a class="nav-link" href="{{ url('/libros') }}"><i class="bi bi-book"></i> Libros</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#"><i class="bi bi-wallet"></i> Préstamos</a>
+                            <a class="nav-link" href="{{ url('/prestamos') }}"><i class="bi bi-wallet"></i> Préstamos</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ url('/autores') }}"><i class="bi bi-people"></i> Autores</a>

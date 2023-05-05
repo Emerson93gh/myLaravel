@@ -5,27 +5,26 @@
             <div class="col-12 table-responsive">
                 <br />
                 <h3 align="center" class="text-success fw-bold">
-                    Catálogo de libros
+                    Registro de los préstamos de libros
                 </h3>
                 <br />
                 <div align="right">
                     <button type="button" name="create_record" id="create_record" class="btn btn-success">
                         <i class="bi bi-plus-square"></i>
-                        Agregar Libro
+                        Prestar Libro
                     </button>
                 </div>
                 <br />
                 <div class="card">
                     <div class="card-body">
-                        <table id="libros_datatable" class="table table-success table-striped table-bordered text-center jusify-content-center">
+                        <table id="prestamos_datatable" class="table table-success table-striped table-bordered text-center jusify-content-center">
                             <thead>
                                 <tr>
                                     <th class="text-center"># ID</th>
-                                    <th class="text-center">Título del libro</th>
-                                    <th class="text-center">Autor</th>
-                                    <th class="text-center">Ubicación</th>
-                                    <th class="text-center">Cantidad de ejemplares</th>
-                                    <th class="text-center">Cantidad disponibles</th>
+                                    <th class="text-center">Nombre del lector</th>
+                                    <th class="text-center">Libro</th>
+                                    <th class="text-center">Fecha de préstammo</th>
+                                    <th class="text-center">Fecha de devolución</th>
                                     <th class="text-center">Acciones</th>
                                 </tr>
                             </thead>
@@ -39,7 +38,7 @@
     @section('js')
         <script type="text/javascript">
             $(document).ready(function() {
-                    $('#libros_datatable').DataTable({
+                    var table = $('#prestamos_datatable').DataTable({
                         responsive: true,
                         autoWidth: false,
                         processing: true,
@@ -66,22 +65,35 @@
                                 "previous": "Anterior"
                             }
                         },
-                        ajax: "{{ route('libros.index') }}",
+                        ajax: "{{ route('prestamos.index') }}",
                         dataType: 'json',
                         type: 'POST',
                         columns: [
                             {data: 'id', name: 'id'},
-                            {data: 'titulo', name: 'titulo'},
-                            {data: 'autor.nombre_autor', name: 'autor.nombre_autor'},
-                            {data: 'ubicacion', name: 'ubicacion'},
-                            {data: 'cantidad_ejemplares', name: 'cantidad_ejemplares'},
-                            {data: 'cantidad_disponibles', name: 'cantidad_disponibles'},
+                            {data: 'nombre_persona', name: 'nombre_persona'},
+                            {data: 'libro.titulo', name: 'libro.titulo'},
+                            {data: 'fecha_prestamo', name: 'fecha_prestamo',
+                                render: function ( data, type, row ) {
+                                    var dateSplit = data.split('-');
+                                    return type === "display" || type === "filter" ?
+                                        dateSplit[2] + '-' + dateSplit[1] + '-' + dateSplit[0] :
+                                        data;
+                                }
+                            },
+                            {data: 'fecha_devolucion', name: 'fecha_devolucion',
+                                render: function ( data, type, row ) {
+                                    var dateSplit = data.split('-');
+                                    return type === "display" || type === "filter" ?
+                                        dateSplit[2] + '-' + dateSplit[1] + '-' + dateSplit[0] :
+                                        data;
+                                }
+                            },
                             {data: 'action', name: 'action', orderable: false, searchable: false},
                         ],
                     });
 
                     $('#create_record').click(function(){
-                    $('.modal-title').text('Agregar nuevo libro');
+                    $('.modal-title').text('Prestar un libro');
                     $('#action_button').val('Guardar');
                     $('#action').val('Add');
                     $('#form_result').html('');
@@ -96,11 +108,11 @@
 
                     if($('#action').val() == 'Add')
                     {
-                        action_url = "{{ route('libros.store') }}";
+                        action_url = "{{ route('prestamos.store') }}";
                     }
                     if($('#action').val() == 'Edit')
                     {
-                        action_url = "{{ route('libros.update') }}";
+                        action_url = "{{ route('prestamos.update') }}";
                     }
 
 
@@ -126,7 +138,7 @@
                         {
                             html = '<div class="alert alert-success">' + data.success + '</div>';
                             $('#sample_form')[0].reset();
-                            $('#libros_datatable').DataTable().ajax.reload();
+                            $('#prestamos_datatable').DataTable().ajax.reload();
                         }
                         $('#form_result').html(html);
                     },
@@ -145,18 +157,18 @@
                     $('#form_result').html('');
 
                     $.ajax({
-                    url :"/libros/edit/"+id+"/",
+                    url :"/prestamos/edit/"+id+"/",
                     headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
                     dataType:"json",
                     success:function(data)
                     {
                         console.log('success: '+data);
-                        $('#titulo').val(data.result.titulo);
-                        $('#autor_id').val(data.result.autor_id);
-                        $('#ubicacion').val(data.result.ubicacion);
-                        $('#cantidad_ejemplares').val(data.result.cantidad_ejemplares);
+                        $('#nombre_persona').val(data.result.nombre_persona);
+                        $('#libro_id').val(data.result.libro_id);
+                        $('#fecha_prestamo').val(data.result.fecha_prestamo);
+                        $('#fecha_devolucion').val(data.result.fecha_devolucion);
                         $('#hidden_id').val(id);
-                        $('.modal-title').text('Editar el libro');
+                        $('.modal-title').text('Editar el préstamo');
                         $('#action_button').val('Actualizar');
                         $('#action').val('Edit');
                         $('.editpass').hide();
@@ -170,15 +182,15 @@
                     });
                     });
 
-                    var libro_id;
+                    var prestamo_id;
                     $(document).on('click', '.delete', function(){
-                        libro_id = $(this).attr('id');
+                        prestamo_id = $(this).attr('id');
                         $('#confirmModal').modal('show');
                     });
 
                     $('#ok_button').click(function(){
                         $.ajax({
-                            url:"/libros/destroy/"+libro_id+"/",
+                            url:"/prestamos/destroy/"+prestamo_id+"/",
                             beforeSend:function(){
                                 $('#ok_button').text('Eliminando...');
                             },
@@ -186,39 +198,13 @@
                             {
                                 setTimeout(function(){
                                 $('#confirmModal').modal('hide');
-                                $('#libros_datatable').DataTable().ajax.reload();
-                                alert('Libro eliminado!');
+                                $('#prestamos_datatable').DataTable().ajax.reload();
+                                alert('Préstamo eliminado!');
                                 }, 2000);
                             }
                         });
                     });
 
-                    // TEST - Ver prestamos del libro
-                    $(document).on('click', '.prestamo', function(event){
-                    event.preventDefault();
-                    var id = $(this).attr('id');
-                    alert(id);
-                    //$('#form_result').html('');
-
-                    // $.get(" {{ route('prestamos.index') }} ", {id: id}, function(response){
-                    //     $('#modalIndex').html(response);
-                    // });
-
-                    // $.ajax({
-                    // url :" {{ route('prestamos.index')}} ",
-                    // headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-                    // dataType:"json",
-                    // success:function(data)
-                    // {
-                    //     console.log('success: '+data);
-                    // },
-                    // error: function(data) {
-                    //     var errors = data.responseJSON;
-                    //     console.log(errors);
-                    // }
-
-                    // });
-                    });
             });
         </script>
     @endsection
@@ -226,9 +212,8 @@
 @endsection
 
 @section('modal')
-    <!-- Seccion modal agregar/editar libro -->
-    @include('libros.modal-agregar')
-    <!-- Seccion modal eliminar libro -->
+    <!-- Seccion modal agregar/editar prestamo -->
+    @include('prestamos.modal-agregar')
+    <!-- Seccion modal eliminar prestamos -->
     @include('theme.modal-confirmar')
-    <!-- Seccion modal prestamo de libro -->
 @endsection

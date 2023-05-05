@@ -4,6 +4,7 @@ use App\Http\Controllers\AutorController;
 use App\Http\Controllers\EmpleadosController;
 use App\Http\Controllers\LibroController;
 use App\Http\Controllers\MemberController;
+use App\Http\Controllers\PrestamoController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -51,3 +52,11 @@ Route::post('/libros', [LibroController::class, 'store'])->name('libros.store');
 Route::get('/libros/edit/{id}/', [LibroController::class, 'edit']);
 Route::post('/libros/update', [LibroController::class, 'update'])->name('libros.update');
 Route::get('/libros/destroy/{id}/', [LibroController::class, 'destroy']);
+
+// Rutas para Prestamos
+Route::get('/prestamos', [PrestamoController::class, 'index'])->name('prestamos.index');
+Route::post('/prestamos', [PrestamoController::class, 'store'])->name('prestamos.store');
+Route::get('/prestamos/show/{id}/', [PrestamoController::class, 'show']);
+Route::get('/prestamos/edit/{id}/', [PrestamoController::class, 'edit']);
+Route::post('/prestamos/update', [PrestamoController::class, 'update'])->name('prestamos.update');
+Route::get('/prestamos/destroy/{id}/', [PrestamoController::class, 'destroy']);
